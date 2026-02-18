@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aarya Vijay — Interior & Spatial Design</title>
+  <title>Aarya Vijay — Interior & Furniture Design</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -17,8 +17,8 @@
       --mid: #5C5751;
       --white: #FAFAF8;
       --accent: #C4A882;
-      --font-display: 'Cormorant Garamond', serif;
-      --font-body: 'DM Sans', sans-serif;
+      --font-display: 'Abril Fatface', cursive;
+      --font-body: 'Hedvig Letters Sans', 'DM Sans', sans-serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -102,7 +102,7 @@
       animation: fadeUp 0.9s 0.2s forwards;
     }
     .hero-image-wrap {
-      width: 760px;
+      width: 1200px;
       max-width: 95vw;
       aspect-ratio: 16/9;
       overflow: hidden;
@@ -127,8 +127,8 @@
       text-align: center;
       font-family: var(--font-display);
       font-size: clamp(1.5rem, 2.5vw, 2.1rem);
-      font-weight: 300;
-      font-style: italic;
+      font-weight: 220;
+      font-style: bold;
       line-height: 1.5;
       color: var(--dark);
       opacity: 0;
@@ -557,6 +557,14 @@
       grid-template-columns: 1fr 1fr;
       gap: 20px;
     }
+    .modal-gallery-title {
+      font-family: var(--font-display);
+      font-size: 1.575rem;
+      margin: 22px 0 14px;
+      letter-spacing: 0.08em;
+      color: var(--dark);
+      text-align: center;
+    }
     .modal-gallery img {
       width: 100%;
       aspect-ratio: 4/3;
@@ -566,26 +574,73 @@
       grid-column: 1 / -1;
       aspect-ratio: 16/7;
     }
+
+    /* Preserve original image proportions for Mridashila (flux) modal gallery */
+    #modal-flux .modal-gallery {
+      grid-auto-rows: auto;
+      align-items: start;
+      grid-template-columns: 1fr 1fr;
+    }
+    #modal-flux .modal-gallery img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: auto;
+      object-fit: contain;
+    }
+    #modal-flux .modal-gallery img:first-child {
+      grid-column: auto;
+      aspect-ratio: auto;
+    }
     .technicals {
       background: #161616;
       color: #fff;
-      padding: 40px 60px;
-      margin-top: 40px;
+      padding: 48px 60px;
+      margin: 0 0 24px 0;
       border-radius: 6px;
     }
     .technicals-title {
       font-family: var(--font-display);
-      font-size: 1.1rem;
+      font-size: 1.12rem;
       margin-bottom: 18px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
     .tech-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
     }
-    .tech-grid img { width: 100%; height: 180px; object-fit: cover; border-radius: 6px; }
+    .tech-grid img { width: 100%; height: 260px; object-fit: cover; border-radius: 6px; }
+
+    /* Lightbox for technical images */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.85);
+      z-index: 1200;
+      cursor: zoom-out;
+    }
+    .lightbox-overlay img {
+      max-width: 95%;
+      max-height: 95%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      border-radius: 4px;
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.35rem;
+      cursor: pointer;
+      padding: 6px;
+    }
 
     /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
@@ -601,6 +656,52 @@
       opacity: 1;
       transform: translateY(0);
     }
+    /* Responsive: phones and small screens */
+    @media (max-width: 600px) {
+      nav { padding: 12px 18px; }
+      .nav-logo { font-size: 1.1rem; }
+      .nav-links { gap: 12px; }
+      .nav-links a { font-size: 0.68rem; }
+
+      #home { padding: 80px 18px 60px; }
+      .hero-image-wrap { width: 100%; aspect-ratio: 4/3; }
+      .hero-quote { font-size: 1rem; max-width: 92vw; }
+
+      section { padding: 56px 18px; }
+      .section-heading { font-size: clamp(1.8rem, 6vw, 3rem); }
+
+      /* About -> single column */
+      #about { grid-template-columns: 1fr; gap: 28px; padding-top: 40px; }
+      .about-image-frame { aspect-ratio: 3/4; }
+
+      /* Projects slider adjustments */
+      .slide { min-width: calc(100vw - 48px); margin-right: 18px; max-width: none; aspect-ratio: 4/3; }
+      .slide:first-child { margin-left: 18px; }
+      .slide img { height: 100%; }
+      .slide-overlay { padding: 18px; }
+      .slide-title { font-size: 1.25rem; }
+
+      .slider-controls { padding: 18px; gap: 8px; }
+
+      /* Contact grid -> single column */
+      .contact-grid { grid-template-columns: 1fr; gap: 28px; }
+
+      /* Modal adjustments */
+      .modal-nav { padding: 12px 18px; }
+      .modal-content { padding: 36px 18px; max-width: 92vw; }
+      .modal-title { font-size: clamp(1.8rem, 8vw, 2.8rem); margin-bottom: 28px; }
+      .modal-meta { grid-template-columns: 1fr; gap: 12px; padding: 18px 0; }
+      .modal-desc { max-width: 100%; margin-bottom: 28px; }
+
+      .modal-gallery { grid-template-columns: 1fr; gap: 12px; }
+      .modal-gallery img:first-child { grid-column: auto; aspect-ratio: auto; }
+
+      .technicals { padding: 20px; margin-top: 18px; }
+      .tech-grid { grid-template-columns: 1fr; gap: 12px; }
+      .tech-grid img { height: auto; }
+
+      .footer-bar { padding: 16px 18px; flex-direction: column; gap: 8px; align-items: flex-start; }
+    }
   </style>
 </head>
 <body>
@@ -613,19 +714,20 @@
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="images/resume.png" target="_blank" rel="noopener">Resume</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <section id="home">
-    <p class="hero-eyebrow">Interior & Spatial Design</p>
+    <p class="hero-eyebrow">Interior & Furniture Design</p>
     <div class="hero-image-wrap">
       <!-- Placeholder hero image — replace src with your own photo -->
       <img src="images/hero.jpeg" alt="Interior design space" />
     </div>
     <blockquote class="hero-quote">
-      "Creative, considerate, human-centred design — spaces that breathe and endure."
-      <span>— Aarya Vijay</span>
+      "Form follows Function or Function follows Form?"
+      <span></span>
     </blockquote>
   </section>
 
@@ -655,12 +757,12 @@
           <p>B.Des Interior & Furniture Design<br/>Unitedworld Institute of Design, GD Goenka University</p>
         </div>
         <div class="about-detail-item">
-          <label>Specialisation</label>
-          <p>Interior Styling<br/>Material Handling<br/>Model Making</p>
+          <label>Skills</label>
+          <p>Interior Styling · Material Handling<br/>3D Modelling · Drafting<br/>Team Work · Good Listner · Quick Learner</p>
         </div>
         <div class="about-detail-item">
           <label>Software</label>
-          <p>SketchUp · AutoCAD · Rhino<br/>Adobe Photoshop · Figma</p>
+          <p>SketchUp · AutoCAD · Rhino · D5 · 3dmax<br/>Adobe Photoshop · Figma · InDesign</p>
         </div>
         <div class="about-detail-item">
           <label>Based In</label>
@@ -692,7 +794,7 @@
         <div class="slide" onclick="openProject('knit')">
           <img src="images/knit.png" alt="The Knit Cafe" />
           <a class="slide-overlay" href="javascript:void(0)">
-            <span class="slide-tag">Retail· 2024</span>
+            <span class="slide-tag">Cafe· 2024</span>
             <span class="slide-title">The Knit Cafe</span>
             <span class="slide-sub"></span>
             <span class="slide-arrow">View Project →</span>
@@ -704,7 +806,7 @@
           <a class="slide-overlay" href="javascript:void(0)">
             <span class="slide-tag">2025</span>
             <span class="slide-title">The Kerala Project</span>
-            <span class="slide-sub">Urban Streetscrapping · Kochi</span>
+            <span class="slide-sub">Urban Streetscaping · Kochi</span>
             <span class="slide-arrow">View Project →</span>
           </a>
         </div>
@@ -714,27 +816,27 @@
           <a class="slide-overlay" href="javascript:void(0)">
             <span class="slide-tag">2025</span>
             <span class="slide-title">Mridashila</span>
-            <span class="slide-sub">Streetspace Design</span>
+            <span class="slide-sub">Furniture Range</span>
             <span class="slide-arrow">View Project →</span>
           </a>
         </div>
 
         <div class="slide" onclick="openProject('roots')">
-          <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80" alt="Roots Hotel" />
+          <img src="images/Frame 85.png" alt="Roots Hotel" />
           <a class="slide-overlay" href="javascript:void(0)">
-            <span class="slide-tag">Hospitality · 2023</span>
-            <span class="slide-title">Roots Hotel</span>
-            <span class="slide-sub">Boutique Hotel Lobby · Jaipur</span>
+            <span class="slide-tag">Furniture Design · 2025</span>
+            <span class="slide-title">Arka</span>
+            <span class="slide-sub">Bench · Delhi</span>
             <span class="slide-arrow">View Project →</span>
           </a>
         </div>
 
         <div class="slide" onclick="openProject('atelier')">
-          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80" alt="Atelier Showroom" />
+          <img src="images/Frame 83.png" alt="Atelier Showroom" />
           <a class="slide-overlay" href="javascript:void(0)">
-            <span class="slide-tag">Retail · 2023</span>
-            <span class="slide-title">Atelier Showroom</span>
-            <span class="slide-sub">Fashion Showroom · Bengaluru</span>
+            <span class="slide-tag">Commercial & Residential Buildings · 2024</span>
+            <span class="slide-title">Others</span>
+            <span class="slide-sub">Independent Projects</span>
             <span class="slide-arrow">View Project →</span>
           </a>
         </div>
@@ -774,7 +876,7 @@
         </div>
         <div class="social-links">
           <a class="social-link" href="https://www.behance.net/aaryavijay" target="_blank">Behance</a>
-          <a class="social-link" href="https://www.linkedin.com/in/aarya" target="_blank">LinkedIn</a>
+          <a class="social-link" href="https://www.linkedin.com/in/aarya-vijay-3049132a3?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">LinkedIn</a>
           <a class="social-link" href="mailto:aaryavijay26@gmail.com">Email</a>
         </div>
       </div>
@@ -783,7 +885,7 @@
 
   <footer class="footer-bar">
     <p>© 2025 Aarya Vijay. All rights reserved.</p>
-    <p>Interior & Spatial Design</p>
+    <p>Interior & Furniture Design</p>
   </footer>
 
   <!-- PROJECT MODALS -->
@@ -803,14 +905,8 @@
         <div class="modal-meta-item"><label>Area</label><p>2,400 sq ft</p></div>
       </div>
       <p class="modal-desc">
-        The Discs is a concept record store that reimagines the vinyl shopping experience as a cultural destination. Drawing inspiration from the circular geometry of vinyl records, the spatial design uses curved forms, acoustic ceiling treatments, and rich red tones to create an immersive, sensory environment. The layout encourages discovery — customers meander through curated listening zones before arriving at the central counter, framed beneath a dramatic mushroom-form pendant light.
+        The Discs is a concept record store that reimagines the vinyl shopping experience as a cultural destination. Drawing inspiration from the circular geometry of vinyl records, the spatial design uses curved forms, acoustic ceiling treatments, and rich red tones to create an immersive, sensory environment. The layout encourages discovery — customers meander through curated listening zones before arriving at the central counter.
       </p>
-      <div class="modal-gallery">
-        <img src="images/Frame 30.jpg" alt="Detail 1" />
-        <img src="images/Frame 31.jpg" alt="Detail 2" />
-        <img src="images/Frame 32.jpg" alt="Detail 3" />
-        <img src="images/Frame 33.jpg" alt="Detail 4" />
-      </div>
       <div class="technicals">
         <h1 class="technicals-title">Technicals</h1>
         <div class="tech-grid">
@@ -818,7 +914,15 @@
           <img src="images/Frame 21.jpg" alt="Floor design 1" />
         </div>
       </div>
-    </div>ß
+      <h3 class="modal-gallery-title">Gallery</h3>
+      <div class="modal-gallery">
+        <img src="images/Frame 30.jpg" alt="Detail 1" />
+        <img src="images/Frame 31.jpg" alt="Detail 2" />
+        <img src="images/Frame 32.jpg" alt="Detail 3" />
+        <img src="images/Frame 33.jpg" alt="Detail 4" />
+        <img src="images/Frame 28.jpg" alt="Detail 4" />
+      </div>
+    </div>
   </div>
 
   <div class="project-modal" id="modal-knit">
@@ -829,7 +933,7 @@
     <div class="modal-content">
       <p class="modal-tag">Residential · 2024</p>
       <h1 class="modal-title">The Knit Cafe</h1>
-      <img class="modal-hero-img" src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1400&q=80" alt="The Knit Cafe" />
+      <img class="modal-hero-img" src="images/knit.png" alt="The Knit Cafe" />
       <div class="modal-meta">
         <div class="modal-meta-item"><label>Year</label><p>2024</p></div>
         <div class="modal-meta-item"><label>Type</label><p>Residential</p></div>
@@ -837,21 +941,28 @@
         <div class="modal-meta-item"><label>Area</label><p>3,200 sq ft</p></div>
       </div>
       <p class="modal-desc">
-        The Knit Cafe is a private family residence designed around the idea of sanctuary — a home that protects without confining. Warm natural materials, layered lighting, and carefully considered thresholds create a progression from public to private spaces. The palette of warm whites, terracotta, and aged brass references the client's Indian heritage while feeling wholly contemporary.
+        The Knit Café reimagines the former Café Dori site at Dhan Mill Compound as a 225 m² warm, community-driven space that blends café culture with the tactile art of knitting. Designed as a flexible, multi-use environment, the project transforms the existing warehouse setting into a cozy yet open studio café where visitors can gather, work, create, and unwind.
       </p>
-      <div class="modal-gallery">
-        <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1400&q=80" alt="Living room" />
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80" alt="Kitchen" />
-        <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=700&q=80" alt="Bedroom" />
-      </div>
       <div class="technicals">
         <h3 class="technicals-title">Technicals</h3>
         <div class="tech-grid">
-          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1400&q=80" alt="Floor design 1" />
-          <img src="https://images.unsplash.com/photo-1505691723518-36a6bfb4c2f3?w=1400&q=80" alt="Floor design 2" />
-          <img src="https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?w=1400&q=80" alt="Floor design 3" />
-          <img src="https://images.unsplash.com/photo-1545127439-6a1f3a3b0b16?w=1400&q=80" alt="Floor design 4" />
+          <img src="images/Frame 47.png" alt="Floor design 1" />
+          <img src="images/Frame 48.png" alt="Floor design 2" />
+          <img src="images/Frame 49.png" alt="Floor design 3" />
+          <img src="images/Frame 50.png" alt="Floor design 4" />
         </div>
+      </div>
+      <h3 class="modal-gallery-title">Gallery</h3>
+      <div class="modal-gallery">
+        <img src="images/Frame 51.png" alt="Lobby0" />
+        <img src="images/Frame 52.png" alt="Lobby1" />
+        <img src="images/Frame 56.png" alt="Lobby5" />
+        <img src="images/Frame 57.png" alt="Lobby6" />
+        <img src="images/Frame 58.png" alt="Lobby7" />
+        <img src="images/Frame 59.png" alt="Lobby8" />
+        <img src="images/Frame 60.png" alt="Lobby9" />
+        <img src="images/Frame 61.png" alt="Lobby10" />
+        <img src="images/Frame 62.png" alt="Lobby11" />
       </div>
     </div>
   </div>
@@ -862,31 +973,35 @@
       <span class="modal-logo">Aarya Vijay</span>
     </div>
     <div class="modal-content">
-      <p class="modal-tag">F&B · 2024</p>
-      <h1 class="modal-title">Terra Café</h1>
-      <img class="modal-hero-img" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1400&q=80" alt="Terra Café" />
+      <p class="modal-tag">Urban Streetscrapping · 2025</p>
+      <h1 class="modal-title">The Kerala Project</h1>
+      <img class="modal-hero-img" src="images/kerala.png" alt="Terra Café" />
       <div class="modal-meta">
-        <div class="modal-meta-item"><label>Year</label><p>2024</p></div>
-        <div class="modal-meta-item"><label>Type</label><p>Café & Bistro</p></div>
-        <div class="modal-meta-item"><label>Location</label><p>Gurgaon, India</p></div>
-        <div class="modal-meta-item"><label>Area</label><p>1,800 sq ft</p></div>
+        <div class="modal-meta-item"><label>Year</label><p>2025</p></div>
+        <div class="modal-meta-item"><label>Type</label><p>Urban Streetscrapping</p></div>
+        <div class="modal-meta-item"><label>Location</label><p>Kochi, India</p></div>
+        <div class="modal-meta-item"><label>Area</label><p>8 x 40 meters</p></div>
       </div>
       <p class="modal-desc">
-        Terra is a café rooted in the language of earth and materiality — raw concrete, handmade ceramic tiles, reclaimed timber, and indoor plant installations create a grounded, tactile environment. Daylight floods through expansive glazing, shifting the mood throughout the day. The spatial sequence moves from a bright morning café zone to a more intimate evening dining area at the rear.
+        This streetscaping project reimagines an 8m x 40m stretch connecting the Spice Trade Centre to the Crafters Store in Jew Town, Kochi. Rooted in the area’s colonial architecture, spice heritage, and vibrant retail culture, the design enhances pedestrian experience while preserving the historic character of the street.
       </p>
-      <div class="modal-gallery">
-        <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=1400&q=80" alt="Seating" />
-        <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=700&q=80" alt="Counter" />
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=700&q=80" alt="Interior" />
-      </div>
       <div class="technicals">
         <h3 class="technicals-title">Technicals</h3>
         <div class="tech-grid">
-          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1400&q=80" alt="Floor design 1" />
-          <img src="https://images.unsplash.com/photo-1505691723518-36a6bfb4c2f3?w=1400&q=80" alt="Floor design 2" />
-          <img src="https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?w=1400&q=80" alt="Floor design 3" />
-          <img src="https://images.unsplash.com/photo-1545127439-6a1f3a3b0b16?w=1400&q=80" alt="Floor design 4" />
+          <img src="images/Frame 37.png" alt="Floor design 1" />
+          <img src="images/Frame 38.png" alt="Floor design 2" />
+          <img src="images/Frame 39.png" alt="Floor design 3" />
+          <img src="images/Frame 40.png" alt="Floor design 4" />
         </div>
+      </div>
+      <h3 class="modal-gallery-title">Gallery</h3>
+      <div class="modal-gallery">
+        <img src="images/Frame 41.png" alt="Seating" />
+         <img src="images/Frame 42.png" alt="Seating0" />
+          <img src="images/Frame 43.png" alt="Seating1" />
+           <img src="images/Frame 44.png" alt="Seating2" />
+            <img src="images/Frame 45.png" alt="Seating3" />
+             <img src="images/Frame 46.png" alt="Seating4" />
       </div>
     </div>
   </div>
@@ -897,31 +1012,34 @@
       <span class="modal-logo">Aarya Vijay</span>
     </div>
     <div class="modal-content">
-      <p class="modal-tag">Commercial · 2024</p>
-      <h1 class="modal-title">Flux Co-working</h1>
-      <img class="modal-hero-img" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80" alt="Flux" />
+      <p class="modal-tag">Furniture Design · 2025</p>
+      <h1 class="modal-title">Mridashila</h1>
+      <img class="modal-hero-img" src="images/Frame 82 (2).png" alt="Flux" />
       <div class="modal-meta">
-        <div class="modal-meta-item"><label>Year</label><p>2024</p></div>
-        <div class="modal-meta-item"><label>Type</label><p>Workspace Design</p></div>
-        <div class="modal-meta-item"><label>Location</label><p>Mumbai, India</p></div>
-        <div class="modal-meta-item"><label>Area</label><p>5,000 sq ft</p></div>
+        <div class="modal-meta-item"><label>Year</label><p>2025</p></div>
+        <div class="modal-meta-item"><label>Type</label><p>Furniture Design</p></div>
+        <div class="modal-meta-item"><label>Location</label><p>Mahabaleshwar, India</p></div>
+        <div class="modal-meta-item"><label>Area</label><p></p></div>
       </div>
       <p class="modal-desc">
-        Flux is a co-working space designed for the new generation of knowledge workers — adaptable, inspiring, and humane. The design avoids the clichés of tech-office culture in favour of a considered, almost residential quality. Zones for focus, collaboration, and decompression are woven together through a neutral palette punctuated by bold material moments.
+        Mridashila is envisioned as a multifunctional public plaza that blends landscape, urban furniture, and shaded social infrastructure to create a climate-responsive community space. The design prioritizes comfort, interaction, and ecological integration within a contemporary urban setting.
       </p>
-      <div class="modal-gallery">
-        <img src="https://images.unsplash.com/photo-1497366412874-3415097a27e7?w=1400&q=80" alt="Open plan" />
-        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=700&q=80" alt="Meeting room" />
-        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=700&q=80" alt="Breakout" />
-      </div>
       <div class="technicals">
         <h3 class="technicals-title">Technicals</h3>
         <div class="tech-grid">
-          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1400&q=80" alt="Floor design 1" />
-          <img src="https://images.unsplash.com/photo-1505691723518-36a6bfb4c2f3?w=1400&q=80" alt="Floor design 2" />
-          <img src="https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?w=1400&q=80" alt="Floor design 3" />
-          <img src="https://images.unsplash.com/photo-1545127439-6a1f3a3b0b16?w=1400&q=80" alt="Floor design 4" />
+          <img src="images/Urban furniture_page-0008.jpg" alt="Floor design 1" />
+          <img src="images/Urban furniture_page-0009.jpg" alt="Floor design 2" />
         </div>
+      </div>
+      <h3 class="modal-gallery-title">Gallery</h3>
+      <div class="modal-gallery">
+        <img src="images/Urban furniture_page-0002.jpg" alt="Open plan" />
+        <img src="images/Urban furniture_page-0003.jpg" alt="Meeting room" />
+        <img src="images/Urban furniture_page-0004.jpg" alt="Breakout" />
+        <img src="images/Urban furniture_page-0005.jpg" alt="Breakout2" />
+        <img src="images/Urban furniture_page-0006.jpg" alt="Breakout3" />
+        <img src="images/Urban furniture_page-0007.jpg" alt="Breakout4" />
+        <img src="images/Urban furniture_page-0010.jpg" alt="Breakout5" />
       </div>
     </div>
   </div>
@@ -932,31 +1050,31 @@
       <span class="modal-logo">Aarya Vijay</span>
     </div>
     <div class="modal-content">
-      <p class="modal-tag">Hospitality · 2023</p>
-      <h1 class="modal-title">Roots Hotel</h1>
-      <img class="modal-hero-img" src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1400&q=80" alt="Roots Hotel" />
+      <p class="modal-tag">Furniture · 2025</p>
+      <h1 class="modal-title">Arka</h1>
+      <img class="modal-hero-img" src="images/Frame 64.png" alt="Roots Hotel" />
       <div class="modal-meta">
-        <div class="modal-meta-item"><label>Year</label><p>2023</p></div>
-        <div class="modal-meta-item"><label>Type</label><p>Hospitality</p></div>
-        <div class="modal-meta-item"><label>Location</label><p>Jaipur, India</p></div>
-        <div class="modal-meta-item"><label>Area</label><p>4,500 sq ft</p></div>
+        <div class="modal-meta-item"><label>Year</label><p>2025</p></div>
+        <div class="modal-meta-item"><label>Type</label><p>Furniture Design</p></div>
+        <div class="modal-meta-item"><label>Location</label><p>Delhi, India</p></div>
+        <div class="modal-meta-item"><label>Area</label><p>Birch Wood</p></div>
       </div>
       <p class="modal-desc">
-        Roots is a boutique hotel lobby that celebrates Rajasthani craft traditions through a contemporary lens. Hand-blocked textiles, jali screens, and locally quarried stone are deployed with restraint, allowing each element to breathe. The double-height lobby is anchored by a sculptural chandelier crafted from recycled copper — a nod to the region's artisanal heritage.
+        The Arka Bench is a celebration of rhythm, repetition, and lightness in form. Inspired by sound waves and radiating sun patterns, the concentric arcs in the backrest symbolize movement captured in stillness — an echo frozen in wood.
       </p>
-      <div class="modal-gallery">
-        <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=1400&q=80" alt="Lobby" />
-        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700&q=80" alt="Pool" />
-        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=700&q=80" alt="Suite" />
-      </div>
       <div class="technicals">
         <h3 class="technicals-title">Technicals</h3>
         <div class="tech-grid">
-          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1400&q=80" alt="Floor design 1" />
-          <img src="https://images.unsplash.com/photo-1505691723518-36a6bfb4c2f3?w=1400&q=80" alt="Floor design 2" />
-          <img src="https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?w=1400&q=80" alt="Floor design 3" />
-          <img src="https://images.unsplash.com/photo-1545127439-6a1f3a3b0b16?w=1400&q=80" alt="Floor design 4" />
+          <img src="images/Frame 65.png" alt="Floor design 1" />
+          <img src="images/Frame 66.png" alt="Floor design 1" />
+          <img src="images/Frame 67.png" alt="Floor design 1" />
+          <img src="images/Frame 68.png" alt="Floor design 2" />
         </div>
+      </div>
+      <h3 class="modal-gallery-title">Gallery</h3>
+      <div class="modal-gallery">
+        <img src="images/Frame 70.png" alt="Lobby" />
+        <img src="images/Frame 71.png" alt="Pool" />
       </div>
     </div>
   </div>
@@ -967,32 +1085,24 @@
       <span class="modal-logo">Aarya Vijay</span>
     </div>
     <div class="modal-content">
-      <p class="modal-tag">Retail · 2023</p>
-      <h1 class="modal-title">Atelier Showroom</h1>
-      <img class="modal-hero-img" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1400&q=80" alt="Atelier" />
+      <p class="modal-tag">Commercial & Residential Buildings · 2024</p>
+      <h1 class="modal-title">Others</h1>
+      <img class="modal-hero-img" src="images/Frame 83.png" alt="Atelier" />
       <div class="modal-meta">
-        <div class="modal-meta-item"><label>Year</label><p>2023</p></div>
-        <div class="modal-meta-item"><label>Type</label><p>Fashion Showroom</p></div>
-        <div class="modal-meta-item"><label>Location</label><p>Bengaluru, India</p></div>
-        <div class="modal-meta-item"><label>Area</label><p>2,800 sq ft</p></div>
+        <div class="modal-meta-item"><label>Year</label><p>2024</p></div>
+        <div class="modal-meta-item"><label>Type</label><p>Independent Projects</p></div>
+        <div class="modal-meta-item"><label>Location</label><p>India</p></div>
       </div>
       <p class="modal-desc">
-        A fashion showroom conceived as a gallery, not a store. Garments are given space to breathe — displayed on bespoke powder-coated rails that double as spatial dividers. The monochromatic palette of chalk white, soft ivory, and blackened steel allows the clothing to become the colour, ensuring nothing competes with the work on display.
       </p>
-      <div class="modal-gallery">
-        <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=1400&q=80" alt="Showroom" />
-        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=700&q=80" alt="Rail detail" />
-        <img src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?w=700&q=80" alt="Window display" />
-      </div>
       <div class="technicals">
-        <h3 class="technicals-title">Technicals</h3>
+        <h3 class="technicals-title">Gallery</h3>
         <div class="tech-grid">
-          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1400&q=80" alt="Floor design 1" />
-          <img src="https://images.unsplash.com/photo-1505691723518-36a6bfb4c2f3?w=1400&q=80" alt="Floor design 2" />
-          <img src="https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?w=1400&q=80" alt="Floor design 3" />
-          <img src="https://images.unsplash.com/photo-1545127439-6a1f3a3b0b16?w=1400&q=80" alt="Floor design 4" />
+          <img src="images/freelance.png" alt="Floor design 1" />
+          <img src="images/freelance2.png" alt="Floor design 2" /> 
         </div>
       </div>
+      
     </div>
   </div>
 
@@ -1030,7 +1140,11 @@
     }
 
     function slide(dir) {
-      current = Math.max(0, Math.min(total - 1, current + dir));
+      if (dir > 0) {
+        current = (current + dir) % total;
+      } else if (dir < 0) {
+        current = (current + dir + total) % total;
+      }
       updateSlider();
     }
 
@@ -1074,6 +1188,51 @@
       // hero parallax on mousemove and scroll-zoom (composed via CSS variables)
       const hero = document.getElementById('home');
       const heroImg = document.querySelector('.hero-image-wrap img');
+
+  // Lightbox for technicals images
+  (function initTechnicalsLightbox(){
+    const techImgs = document.querySelectorAll('.technicals .tech-grid img');
+    if(!techImgs || techImgs.length === 0) return;
+
+    function openLightbox(src, alt){
+      const overlay = document.createElement('div');
+      overlay.className = 'lightbox-overlay';
+      overlay.tabIndex = -1;
+
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = alt || '';
+      overlay.appendChild(img);
+
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'lightbox-close';
+      closeBtn.setAttribute('aria-label', 'Close');
+      closeBtn.innerHTML = '✕';
+      overlay.appendChild(closeBtn);
+
+      document.body.appendChild(overlay);
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+
+      function close(){
+        if(document.body.contains(overlay)) document.body.removeChild(overlay);
+        document.body.style.overflow = prevOverflow;
+        document.removeEventListener('keydown', onKey);
+      }
+
+      overlay.addEventListener('click', (e) => {
+        if(e.target === overlay || e.target === closeBtn) close();
+      });
+
+      function onKey(e){ if(e.key === 'Escape') close(); }
+      document.addEventListener('keydown', onKey);
+    }
+
+    techImgs.forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    });
+  })();
       if (hero && heroImg) {
         // pointer-driven offsets and pointer scale
         hero.addEventListener('mousemove', (ev) => {
@@ -1090,24 +1249,45 @@
           heroImg.style.setProperty('--ps', `1`);
         });
 
-        // scroll-driven zoom (ss = scroll scale) — uses rAF for smoothness
+        // scroll-driven zoom (ss = scroll scale) — zoom out when scrolling down, zoom in when scrolling up
         let ticking = false;
+        let lastScrollY = window.scrollY;
+        let desiredScale = 1;
+        let currentScale = 1;
+
         function onHeroScroll(){
-          if (ticking) return;
-          ticking = true;
-          window.requestAnimationFrame(() => {
-            const r = hero.getBoundingClientRect();
-            const windowH = window.innerHeight;
-            // fraction visible: when hero center moves from bottom->top of viewport
-            const visible = Math.max(0, Math.min(1, (windowH - r.top) / (windowH + r.height)));
-            const scrollScale = 1 + visible * 0.12; // up to +12%
-            // subtle upward motion as it zooms
-            const scrollY = -visible * 18; // px
-            heroImg.style.setProperty('--ss', String(scrollScale));
-            // combine scroll translate with pointer translate: store scroll translate in --pyScroll
-            heroImg.style.setProperty('--py', `calc(${scrollY}px + var(--py, 0px))`);
-            ticking = false;
-          });
+          const dy = window.scrollY - lastScrollY;
+          lastScrollY = window.scrollY;
+
+          // Determine desired scale based on scroll direction
+          if (dy > 0) { // scrolling down -> zoom out slightly (70% stronger)
+            desiredScale = 0.898; /* 0.94 - 70% of 0.06 = 0.898 */
+          } else if (dy < 0) { // scrolling up -> zoom in slightly (70% stronger)
+            desiredScale = 1.102; /* 1.06 + 70% of 0.06 = 1.102 */
+          }
+
+          // Also factor visibility so effect fades as hero leaves viewport
+          if (!ticking) {
+            ticking = true;
+            window.requestAnimationFrame(() => {
+              const r = hero.getBoundingClientRect();
+              const windowH = window.innerHeight;
+              const visible = Math.max(0, Math.min(1, (windowH - r.top) / (windowH + r.height)));
+
+              // Blend desiredScale toward neutral (1) when not visible
+              const blendedDesired = 1 + (desiredScale - 1) * Math.max(0, visible);
+
+              // smooth currentScale toward blendedDesired
+              currentScale += (blendedDesired - currentScale) * 0.12;
+              heroImg.style.setProperty('--ss', String(currentScale));
+
+              // subtle upward motion tied to visibility (same as before)
+              const scrollY = -visible * 18; // px
+              heroImg.style.setProperty('--py', `calc(${scrollY}px + var(--py, 0px))`);
+
+              ticking = false;
+            });
+          }
         }
         window.addEventListener('scroll', onHeroScroll, { passive: true });
         onHeroScroll();
